@@ -6,7 +6,7 @@ function App() {
       <header className="App-header">
         
         <p>
-          Hola como estan?
+          Aca ya esta listo el login
         </p>
         <a
           className="App-link"
