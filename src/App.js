@@ -1,24 +1,30 @@
 
+import Navbar from "./components/Navbar/Navbar.jsx"
+
 
 function App() {
+
+  const apellido = "Duje"
+
+  const sumar = ()=>{
+    console.log( `Hola jorge ${apellido}`)
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        
-        <p>
-          Aca ya esta listo el login
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          documentacion
-        </a>
-      </header>
+        <Navbar title="Hola" sadsa/>
+        <Navbar title="chau" />
+        <Navbar title="estas" />
+        <Navbar title="casa" />
+        <Navbar title="22" />
+        <Navbar title="54" />
+        <Navbar title="11" />
     </div>
   );
 }
 
 export default App;
+
+// <Navbar uno=1 dos=2 /> === Navbar( 1, 2, 3)
+
