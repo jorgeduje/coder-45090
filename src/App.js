@@ -12,7 +12,6 @@ function App() {
         <Header />
         <LoginContainer />
         <ItemListContainer usuario={nombreUsuario} apellido="Lopez" edad={22} />
-        {/* <ItemListContainer usuario={nombreUsuario} apellido="Lopez" edad={22} /> */}
       </Layout>
     </div>
   );
