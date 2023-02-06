@@ -26,7 +26,6 @@ const ItemListContainer = () => {
       });
    }, [])
 
-   console.log("mis items son: ",  items )
 
   return (
     <>
