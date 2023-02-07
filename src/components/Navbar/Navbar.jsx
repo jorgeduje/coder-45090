@@ -1,22 +1,14 @@
 
-// EXPORTACION NOMBRADA, SE IMPORTA ENTRE {} Y CON EL MISMO NOMBRE
-// export const obj = {
-
+import "./Navbar.css"
 import ListNavbar from "../ListNavbar/ListNavbar"
-
-// }
-// export const obj2 = {
-
-// }
-
 
 export const Navbar = ()=>{
 
     return (
-        <ul>
-           <ListNavbar title="Productos" />
-           <ListNavbar title="Servicios" />
-           <ListNavbar title="Quienes somos" />
+        <ul className="categories">
+           <ListNavbar title="Todas" />
+           <ListNavbar title="Urbanas" />
+           <ListNavbar title="Deportivas" />
         </ul>
     )
 

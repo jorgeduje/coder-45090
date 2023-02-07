@@ -1,0 +1,10 @@
+.container-logo{
+    width: 10%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo-navbar{
+    color: #7F669D;
+}
