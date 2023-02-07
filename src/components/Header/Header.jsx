@@ -1,20 +1,23 @@
 import CartWidget from "../CartWidget/CartWidget";
 import { Navbar } from "../Navbar/Navbar";
 
-const Header = () => {
+import "./Header.css"
 
+const Header = () => {
   return (
     <div
       style={{
         display: "flex",
         width: "100%",
-        height: "20vh",
+        height: "10vh",
         justifyContent: "space-between",
         alignItems: "center",
-        backgroundColor: "lightblue"
+        boxShadow: "10px 0px 10px 1px #7F669D",
       }}
     >
-      <h2>Logo</h2>
+      <div className="container-logo">
+        <h4 className="logo-navbar">Comision: 45090</h4>
+      </div>
       <Navbar />
       <CartWidget />
     </div>

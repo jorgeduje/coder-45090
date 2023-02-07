@@ -6,15 +6,14 @@ const ItemList = ({ items }) => {
     <div
       style={{
         width: "100%",
-        backgroundColor: "steelblue",
         display: "flex",
         justifyContent: "space-evenly",
         alignItems: "center",
-        height: "60vh",
+        minHeight: "90vh",
       }}
     >
       {items.map((element) => {
-        return <ProductCard element={element} />;
+        return <ProductCard element={element} key={element.id} />;
       })}
     </div>
   );
