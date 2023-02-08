@@ -1,36 +1,37 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { products } from "../../productsMock";
 import ItemList from "../ItemList/ItemList";
-import "./ItemListContainer.css"
+import "./ItemListContainer.css";
 
 const ItemListContainer = () => {
+  const { categoryName } = useParams();
 
-  const [items, setItems] = useState([])
+  const [items, setItems] = useState([]);
 
-  const errorMessage = "El servidor esta caido"
-  
-   useEffect( ()=>{
+  useEffect(() => {
+    const productsFiltered = products.filter(
+      (product) => product.category === categoryName
+    );
+
     const task = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(products)
-      }, 500);
+      resolve(categoryName ? productsFiltered : products);
+
       // reject(errorMessage);
     });
-  
+
     task
       .then((res) => {
-        setItems( res );
+        setItems(res);
       })
-      .catch( (error)=> {
-        console.log("aca se rechazo: ", error)
+      .catch((error) => {
+        console.log("aca se rechazo: ", error);
       });
-   }, [])
-
-   console.log("mis items son: ",  items )
+  }, [categoryName]);
 
   return (
     <div>
-      <ItemList items={ items } />
+      <ItemList items={items} />
     </div>
   );
 };

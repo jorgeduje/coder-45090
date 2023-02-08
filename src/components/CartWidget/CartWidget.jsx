@@ -1,10 +1,12 @@
-import "./CartWidget.css"
+import { Link } from "react-router-dom";
 
-import { BsFillCartCheckFill } from 'react-icons/bs';
+import "./CartWidget.css";
+import { BsFillCartCheckFill } from "react-icons/bs";
 
 const CartWidget = () => {
   return (
-    <div className="container-cart">
+    <Link to="/cart">
+      <div className="container-cart">
         <BsFillCartCheckFill
           style={{
             fontSize: "2rem",
@@ -15,7 +17,8 @@ const CartWidget = () => {
           <span>12</span>
         </div>
       </div>
-  )
-}
+    </Link>
+  );
+};
 
-export default CartWidget
+export default CartWidget;

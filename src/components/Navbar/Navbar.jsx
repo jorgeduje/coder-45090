@@ -1,18 +1,23 @@
+import "./Navbar.css";
+import ListNavbar from "../ListNavbar/ListNavbar";
+import { Link } from "react-router-dom";
 
-import "./Navbar.css"
-import ListNavbar from "../ListNavbar/ListNavbar"
+export const Navbar = () => {
+  return (
+    <ul className="categories">
+        
+      <Link to="/">
+        <ListNavbar title="Todas" />
+      </Link>
 
-export const Navbar = ()=>{
+      <Link to="/category/urbanas">
+        <ListNavbar title="Urbanas" />
+      </Link>
 
-    return (
-        <ul className="categories">
-           <ListNavbar title="Todas" />
-           <ListNavbar title="Urbanas" />
-           <ListNavbar title="Deportivas" />
-        </ul>
-    )
+      <Link to="/category/deportivas">
+        <ListNavbar title="Deportivas" />
+      </Link>
 
-}
-
-
-
+    </ul>
+  );
+};

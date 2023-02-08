@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./ProductCard.css"
+import "./ProductCard.css";
 
 import {
   Button,
@@ -9,11 +9,12 @@ import {
   CardContent,
   CardMedia,
   Typography,
-} from "@mui/material"
+} from "@mui/material";
+import { Link } from "react-router-dom";
 
-const ProductCard = ({ element }) => {
+const ProductCard = ( { element } ) => {
   return (
-    <Card sx={{ maxWidth: 345}}>
+    <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         height="200"
@@ -38,9 +39,15 @@ const ProductCard = ({ element }) => {
         </Typography>
       </CardContent>
       <CardActions style={{ display: "flex", justifyContent: "center" }}>
-          <Button size="large" variant="contained" sx={{textTransform: "none"}}>
+        <Link to={`/itemDetail/${element.id}`}>
+          <Button
+            size="large"
+            variant="contained"
+            sx={{ textTransform: "none" }}
+          >
             Ver mas
           </Button>
+        </Link>
       </CardActions>
     </Card>
   );
