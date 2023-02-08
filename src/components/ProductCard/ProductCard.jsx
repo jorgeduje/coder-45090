@@ -38,8 +38,8 @@ const ProductCard = ({ element }) => {
         </Typography>
       </CardContent>
       <CardActions style={{ display: "flex", justifyContent: "center" }}>
-          <Button size="large" variant="contained">
-            Ver detalle
+          <Button size="large" variant="contained" sx={{textTransform: "none"}}>
+            Ver mas
           </Button>
       </CardActions>
     </Card>

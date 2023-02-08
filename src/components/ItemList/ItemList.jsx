@@ -10,6 +10,9 @@ const ItemList = ({ items }) => {
         justifyContent: "space-evenly",
         alignItems: "center",
         minHeight: "90vh",
+        flexWrap: "wrap",
+        gap: "30px",
+        paddingTop: "30px"
       }}
     >
       {items.map((element) => {

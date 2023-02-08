@@ -13,6 +13,7 @@ const Header = () => {
         justifyContent: "space-between",
         alignItems: "center",
         boxShadow: "10px 0px 10px 1px #7F669D",
+        padding: "0 10px"
       }}
     >
       <div className="container-logo">
