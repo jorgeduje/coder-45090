@@ -1,37 +1,61 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { products } from "../../productsMock";
-import ItemList from "../ItemList/ItemList";
-import "./ItemListContainer.css";
 
 const ItemListContainer = () => {
-  const { categoryName } = useParams();
-
-  const [items, setItems] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [isCreated, setIsCreated] = useState(false)
 
   useEffect(() => {
-    const productsFiltered = products.filter(
-      (product) => product.category === categoryName
-    );
+    axios
+      .get("http://localhost:5000/products")
+      .then((res) => setProducts(res.data));
 
-    const task = new Promise((resolve, reject) => {
-      resolve(categoryName ? productsFiltered : products);
+    // axios.get("http://localhost:5000/products/2")
+    //   .then( res => console.log(res.data) )
 
-      // reject(errorMessage);
-    });
+    setIsCreated(false)
+  }, [isCreated]);
 
-    task
-      .then((res) => {
-        setItems(res);
-      })
-      .catch((error) => {
-        console.log("aca se rechazo: ", error);
-      });
-  }, [categoryName]);
+  const createProduct = () => {
+    const newProduct = {
+      title: "zapatillas viejasss",
+      price: 12,
+      stock: 4,
+      description: "Zapatillas de ultima generacion para el deporte",
+      category: "urbanas",
+      img: "https://res.cloudinary.com/dnqfh2chg/image/upload/v1669430220/rtokwmt3j03bblbfhwhb.jpg",
+    };
+
+    axios.post("http://localhost:5000/products", newProduct);
+
+    setIsCreated(true)
+  };
+
+  const updateProduct = ()=>{
+
+    axios.patch("http://localhost:5000/products/2", {price: 100})
+
+  }
+
+  const deleteProduct = ()=>{
+
+    axios.delete("http://localhost:5000/products/2")
+
+  }
+
+  // Create Read Update Delete ---> CRUD
+
 
   return (
     <div>
-      <ItemList items={items} />
+      {products.map((product) => {
+        return <h1 key={product.id}>{product.title}</h1>;
+      })}
+
+      <button onClick={createProduct}>Agregar producto</button>
+      <button onClick={updateProduct}>Modificar producto</button>
+      <button onClick={deleteProduct}>Eliminar producto</button>
+
     </div>
   );
 };

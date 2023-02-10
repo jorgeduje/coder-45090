@@ -1,0 +1,58 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "nike 360",
+      "price": 20500,
+      "stock": 5,
+      "description": "Zapatillas de ultima generacion para el deporte",
+      "category": "deportivas",
+      "img": "https://res.cloudinary.com/dnqfh2chg/image/upload/v1669326932/free-metcon-4-zapatillas-de-entrenamiento-TQMCZg_fvia3m.png"
+    },
+    {
+      "id": 3,
+      "title": "Puma",
+      "price": 19000,
+      "stock": 5,
+      "description": "Las clasicas zapatillas que van para cualquier momento del dia",
+      "category": "urbanas",
+      "img": "https://res.cloudinary.com/dnqfh2chg/image/upload/v1669430165/images_lujpmr.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Jaguar",
+      "price": 17800,
+      "stock": 5,
+      "description": "Zapatillas de ultima generacion para el deporte",
+      "category": "urbanas",
+      "img": "https://res.cloudinary.com/dnqfh2chg/image/upload/v1669430220/rtokwmt3j03bblbfhwhb.jpg"
+    },
+    {
+      "title": "Producto nuevo",
+      "price": 22,
+      "stock": 51,
+      "description": "Zapatillas de ultima generacion para el deporte",
+      "category": "urbanas",
+      "img": "https://res.cloudinary.com/dnqfh2chg/image/upload/v1669430220/rtokwmt3j03bblbfhwhb.jpg",
+      "id": 5
+    },
+    {
+      "title": "zapatillas nuevasss",
+      "price": 12,
+      "stock": 4,
+      "description": "Zapatillas de ultima generacion para el deporte",
+      "category": "urbanas",
+      "img": "https://res.cloudinary.com/dnqfh2chg/image/upload/v1669430220/rtokwmt3j03bblbfhwhb.jpg",
+      "id": 6
+    },
+    {
+      "title": "zapatillas viejasss",
+      "price": 12,
+      "stock": 4,
+      "description": "Zapatillas de ultima generacion para el deporte",
+      "category": "urbanas",
+      "img": "https://res.cloudinary.com/dnqfh2chg/image/upload/v1669430220/rtokwmt3j03bblbfhwhb.jpg",
+      "id": 7
+    }
+  ]
+}
