@@ -1,23 +1,36 @@
 import "./Navbar.css";
 import ListNavbar from "../ListNavbar/ListNavbar";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const Navbar = () => {
   return (
     <ul className="categories">
-        
-      <Link to="/">
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          isActive ? "active-navbar" : "navbar-item"
+        }
+      >
         <ListNavbar title="Todas" />
-      </Link>
+      </NavLink>
 
-      <Link to="/category/urbanas">
+      <NavLink
+        to="/category/urbanas"
+        className={({ isActive }) =>
+          isActive ? "active-navbar" : "navbar-item"
+        }
+      >
         <ListNavbar title="Urbanas" />
-      </Link>
+      </NavLink>
 
-      <Link to="/category/deportivas">
+      <NavLink
+        to="/category/deportivas"
+        className={({ isActive }) =>
+          isActive ? "active-navbar" : "navbar-item"
+        }
+      >
         <ListNavbar title="Deportivas" />
-      </Link>
-
+      </NavLink>
     </ul>
   );
 };

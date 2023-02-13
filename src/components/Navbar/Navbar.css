@@ -1,8 +1,18 @@
+.categories {
+  display: flex;
+  justify-content: space-around;
+  gap: 40px;
+}
 
-.categories{
+.navbar-item {
+  list-style: none;
+  color: #7F669D;
+  font-weight: bold;
+}
 
-    display: flex;
-    justify-content: space-around;
-    gap: 40px;
-
+.active-navbar{
+    list-style: none;
+    color: #7F669D;
+    font-weight: bold;
+    background-color: red;
 }
