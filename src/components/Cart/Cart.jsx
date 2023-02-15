@@ -4,7 +4,7 @@ const Cart = ()=>{
 
     return(
         <div>
-            <Form />
+           <h1>Carrito de compras</h1>
         </div>
     )
 }
