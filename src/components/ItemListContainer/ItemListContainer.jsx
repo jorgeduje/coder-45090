@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { products } from "../../productsMock";
 import ItemList from "../ItemList/ItemList";
 import "./ItemListContainer.css";
@@ -8,6 +8,7 @@ const ItemListContainer = () => {
   const { categoryName } = useParams();
 
   const [items, setItems] = useState([]);
+
 
   useEffect(() => {
     const productsFiltered = products.filter(
@@ -27,6 +28,8 @@ const ItemListContainer = () => {
       .catch((error) => {
         console.log("aca se rechazo: ", error);
       });
+
+
   }, [categoryName]);
 
   return (
