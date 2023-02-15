@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import Cart from "./components/Cart/Cart";
+import CartContextProvider from "./context/CartContext";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     // </div>
 
     <BrowserRouter>
+    <CartContextProvider>
 
       <Header />
 
@@ -33,6 +35,7 @@ function App() {
         
 
       </Routes>
+    </CartContextProvider>
 
     </BrowserRouter>
 
