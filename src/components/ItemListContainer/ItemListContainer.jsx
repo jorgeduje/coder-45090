@@ -1,14 +1,26 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { products } from "../../productsMock";
 import ItemList from "../ItemList/ItemList";
 import "./ItemListContainer.css";
 
+// import DotLoader from "react-spinners/DotLoader ";
+import { DotLoader } from "react-spinners";
+
+const styles = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+};
+
 const ItemListContainer = () => {
   const { categoryName } = useParams();
 
-  const [items, setItems] = useState([]);
+  const [isRed, setIsRed] = useState(false);
 
+  // const [show, setShow] = useState(false)
+
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     const productsFiltered = products.filter(
@@ -16,7 +28,9 @@ const ItemListContainer = () => {
     );
 
     const task = new Promise((resolve, reject) => {
-      resolve(categoryName ? productsFiltered : products);
+      setTimeout(() => {
+        resolve(categoryName ? productsFiltered : products);
+      }, 1000);
 
       // reject(errorMessage);
     });
@@ -28,13 +42,37 @@ const ItemListContainer = () => {
       .catch((error) => {
         console.log("aca se rechazo: ", error);
       });
-
-
   }, [categoryName]);
+
+  // IF CON RETURN TEMPRANO
+  // if(items.length < 1){
+  //   return <h1>Cargando.....</h1>
+  // }
 
   return (
     <div>
-      <ItemList items={items} />
+      {/* style={{ backgroundColor: isRed ? "red" : "blue" }} */}
+      <button className={isRed ? "btn-red" : "btn-blue"} 
+      onClick={()=>setIsRed(!isRed)}
+      >
+        {isRed ? "Estoy en rojo" : "Estoy en azul"}
+      </button>
+      {items.length < 1 ? (
+        <DotLoader
+          color={"purple"}
+          cssOverride={styles}
+          size={80}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      ) : (
+        <ItemList items={items} />
+      )}
+
+      {/* {
+         items.length < 1 && <h1>Cargando....</h1> 
+      }
+      <ItemList items={items} /> */}
     </div>
   );
 };
