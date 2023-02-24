@@ -16,10 +16,6 @@ const styles = {
 const ItemListContainer = () => {
   const { categoryName } = useParams();
 
-  const [isRed, setIsRed] = useState(false);
-
-  // const [show, setShow] = useState(false)
-
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -44,19 +40,8 @@ const ItemListContainer = () => {
       });
   }, [categoryName]);
 
-  // IF CON RETURN TEMPRANO
-  // if(items.length < 1){
-  //   return <h1>Cargando.....</h1>
-  // }
-
   return (
     <div>
-      {/* style={{ backgroundColor: isRed ? "red" : "blue" }} */}
-      <button className={isRed ? "btn-red" : "btn-blue"} 
-      onClick={()=>setIsRed(!isRed)}
-      >
-        {isRed ? "Estoy en rojo" : "Estoy en azul"}
-      </button>
       {items.length < 1 ? (
         <DotLoader
           color={"purple"}
@@ -69,10 +54,6 @@ const ItemListContainer = () => {
         <ItemList items={items} />
       )}
 
-      {/* {
-         items.length < 1 && <h1>Cargando....</h1> 
-      }
-      <ItemList items={items} /> */}
     </div>
   );
 };
