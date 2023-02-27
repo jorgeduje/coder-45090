@@ -29,7 +29,7 @@ const ProductCard = ( { element } ) => {
           color="primary"
           align="center"
         >
-          {element.name}
+          {element.title}
         </Typography>
         <Typography variant="body1" color="text.secondary" align="center">
           {element.description}
