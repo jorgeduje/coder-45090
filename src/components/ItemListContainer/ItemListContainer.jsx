@@ -7,6 +7,12 @@ import "./ItemListContainer.css";
 // import DotLoader from "react-spinners/DotLoader ";
 import { DotLoader } from "react-spinners";
 
+// IMPORTAR LA  DB 
+import { db } from "../../firebaseConfig";
+
+import { getDocs, collection, query, where } from "firebase/firestore"
+
+
 const styles = {
   display: "block",
   margin: "0 auto",
@@ -14,31 +20,79 @@ const styles = {
 };
 
 const ItemListContainer = () => {
+
   const { categoryName } = useParams();
 
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    const productsFiltered = products.filter(
-      (product) => product.category === categoryName
-    );
 
-    const task = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(categoryName ? productsFiltered : products);
-      }, 1000);
+    const itemCollection = collection( db , "products" )
 
-      // reject(errorMessage);
-    });
+    if( categoryName ){
 
-    task
-      .then((res) => {
-        setItems(res);
+      const q =  query( itemCollection, where( "category", "==", categoryName ) )
+
+      getDocs(q)
+      .then( (res)=> {
+        const products = res.docs.map( product => {
+            return {
+              ...product.data(),
+              id: product.id
+            }
+        })
+
+        setItems( products )
       })
-      .catch((error) => {
-        console.log("aca se rechazo: ", error);
-      });
+      .catch((err)=> console.log("error: " + err) )
+
+
+
+    }else{
+
+      getDocs(itemCollection)
+      .then( (res)=> {
+        const products = res.docs.map( product => {
+            return {
+              ...product.data(),
+              id: product.id
+            }
+        })
+
+        setItems( products )
+      })
+      .catch((err)=> console.log("error: " + err) )
+
+    }
+
+    
+
+   
   }, [categoryName]);
+
+  console.log( items )
+
+  // useEffect(() => {
+  //   const productsFiltered = products.filter(
+  //     (product) => product.category === categoryName
+  //   );
+
+  //   const task = new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       resolve(categoryName ? productsFiltered : products);
+  //     }, 1000);
+
+  //     // reject(errorMessage);
+  //   });
+
+  //   task
+  //     .then((res) => {
+  //       setItems(res);
+  //     })
+  //     .catch((error) => {
+  //       console.log("aca se rechazo: ", error);
+  //     });
+  // }, [categoryName]);
 
   return (
     <div>
