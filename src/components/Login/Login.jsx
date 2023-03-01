@@ -3,6 +3,7 @@ import { Button, TextField } from "@mui/material";
 import { useFormik } from "formik";
 
 import * as Yup from "yup";
+import { Link } from "react-router-dom";
 
 const Login = () => {
     
@@ -33,6 +34,7 @@ const Login = () => {
 
   return (
     <div style={{ marginTop: "50px" }}>
+      <h1>Tienes cuenta?</h1>
       <form action="" onSubmit={handleSubmit}>
         <TextField
           label="Outlined"
@@ -56,6 +58,9 @@ const Login = () => {
           Ingresar
         </Button>
       </form>
+
+      <h1>No tienes cuenta?</h1>
+      <Link to="/sign-up">Registrate</Link>
     </div>
   );
 };

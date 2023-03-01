@@ -1,17 +1,22 @@
 import { Button } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import "./Cart.css";
 
 import Swal from "sweetalert2";
 
 import NoData from "../../assets/images/noData.svg";
+import FormCheckOut from "../FormCheckOut/FormCheckOut";
+import { Link } from "react-router-dom";
+import FinishBuy from "../FinishBuy/FinishBuy";
 
 const Cart = () => {
   const { cart, clearCart, deleteProductById, getTotalPrice } =
     useContext(CartContext);
 
-  console.log(cart);
+  const [buy, setBuy] = useState(false);
+  const [orderId, setOrderId] = useState(null);
+
 
   const clearCartAlert = () => {
     Swal.fire({
@@ -31,57 +36,72 @@ const Cart = () => {
     });
   };
 
-  // if(cart.length < 1){
-  //   return <img src={NoData} alt="" />
-  // }
+  const total = getTotalPrice();
+
+  if (orderId) {
+    return (
+      <FinishBuy orderId={orderId} />
+    );
+  }
 
   return (
-    <div className="cart-container">
-      {cart.length < 1 ? (
-        <img src={NoData} alt="" />
-      ) : (
-        <div className="container-items">
-          {cart.map((item) => {
-            return (
-              <div key={item.id} className="cart-item">
-                <img src={item.img} alt="" />
-                <div className="cart-item-info">
-                  <h2>{item.name}</h2>
-                  <h2>${item.price}.-</h2>
-                  <h2>Unidades: {item.quantity}</h2>
-                </div>
-                <Button
-                  variant="contained"
-                  onClick={() => deleteProductById(item.id)}
-                >
-                  Quitar
+    <div>
+      {!buy ? (
+        <div className="cart-container">
+          {cart.length < 1 ? (
+            <img src={NoData} alt="" />
+          ) : (
+            <div className="container-items">
+              {cart.map((item) => {
+                return (
+                  <div key={item.id} className="cart-item">
+                    <img src={item.img} alt="" />
+                    <div className="cart-item-info">
+                      <h2>{item.name}</h2>
+                      <h2>${item.price}.-</h2>
+                      <h2>Unidades: {item.quantity}</h2>
+                    </div>
+                    <Button
+                      variant="contained"
+                      onClick={() => deleteProductById(item.id)}
+                    >
+                      Quitar
+                    </Button>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          <div className="cart-info">
+            <h2>Descripcion del carrito:</h2>
+            <h3>Cantidad de productos: </h3>
+            <h3>Precio total: {total > 0 ? total : "No hay items"}</h3>
+            <h3>Descuento: </h3>
+            <h3>Precio final: </h3>
+
+            {cart.length > 0 && (
+              <div className="btn-cart">
+                <Button variant="contained" onClick={() => setBuy(true)}>
+                  Ir al checkout
+                </Button>
+                <Button onClick={() => clearCartAlert()} variant="contained">
+                  Vaciar carrito
                 </Button>
               </div>
-            );
-          })}
-        </div>
-      )}
+            )}
 
-      <div className="cart-info">
-        <h2>Descripcion del carrito:</h2>
-        <h3>Cantidad de productos: </h3>
-        <h3>
-          Precio total: {getTotalPrice() > 0 ? getTotalPrice() : "No hay items"}
-        </h3>
-        <h3>Descuento: </h3>
-        <h3>Precio final: </h3>
-
-        {
-          cart.length > 0 && <div className="btn-cart">
-            <Button variant="contained">Comprar</Button>
-            <Button onClick={() => clearCartAlert()} variant="contained">
-              Vaciar carrito
-            </Button>
+            <h1>El total del carrito es ${total}</h1>
           </div>
-        }
-
-        <h1>El total del carrito es ${getTotalPrice()}</h1>
-      </div>
+        </div>
+      ) : (
+        <FormCheckOut
+          cart={cart}
+          total={total}
+          clearCart={clearCart}
+          setOrderId={setOrderId}
+        />
+      )}
     </div>
   );
 };
