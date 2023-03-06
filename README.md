@@ -19,3 +19,5 @@ const saludar = ()=>{
 ```
 
 `npm start`
+
+!["imagen de react"](/public/logo192.png)
