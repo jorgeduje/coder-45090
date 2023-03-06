@@ -7,7 +7,6 @@ import Swal from "sweetalert2";
 
 import NoData from "../../assets/images/noData.svg";
 import FormCheckOut from "../FormCheckOut/FormCheckOut";
-import { Link } from "react-router-dom";
 import FinishBuy from "../FinishBuy/FinishBuy";
 
 const Cart = () => {

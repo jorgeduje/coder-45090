@@ -31,11 +31,11 @@ const FormCheckOut = ({ cart, total, clearCart, setOrderId }) => {
 
     // ACA DESCONTAMOS EL STOCK DE CADA PRODUCTO
 
-    cart.map((product) => {
+    cart.map((product) =>
       updateDoc(doc(db, "products", product.id), {
         stock: product.stock - product.quantity,
-      });
-    });
+      })
+    );
 
     clearCart();
   };
