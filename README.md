@@ -17,3 +17,5 @@ const saludar = ()=>{
     return "Bienvenidos"
 }
 ```
+
+`npm start`
