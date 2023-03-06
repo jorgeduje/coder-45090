@@ -36,7 +36,7 @@ const Login = () => {
       <h1>Tienes cuenta?</h1>
       <form action="" onSubmit={handleSubmit}>
         <TextField
-          label="Outlined"
+          label="Ingresa tu email"
           variant="outlined"
           value={values.email}
           name="email"
