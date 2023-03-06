@@ -25,7 +25,6 @@ const ItemDetail = ({ product }) => {
   };
 
   const quantity = getQuantityById(product.id)
-  console.log(quantity)
 
   return (
     <div className={styles.containerItemDetail}>

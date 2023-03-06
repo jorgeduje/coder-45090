@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { products } from "../../productsMock";
+
 import ItemList from "../ItemList/ItemList";
 import "./ItemListContainer.css";
 
@@ -70,7 +70,6 @@ const ItemListContainer = () => {
    
   }, [categoryName]);
 
-  console.log( items )
 
   // useEffect(() => {
   //   const productsFiltered = products.filter(
